@@ -839,7 +839,7 @@ Note that a new instance must be added to the scene using
         mobSpawnLocation.SetOffset(_random.Next());
 
         // Create a Mob instance and add it to the scene.
-        var mobInstance = (RigidBody2D)Mob.Instance();
+        var mobInstance = (Mob)Mob.Instance();
         AddChild(mobInstance);
 
         // Set the mob's direction perpendicular to the path direction.
@@ -853,7 +853,7 @@ Note that a new instance must be added to the scene using
         mobInstance.Rotation = direction;
 
         // Choose the velocity.
-        mobInstance.SetLinearVelocity(new Vector2(RandRange(150f, 250f), 0).Rotated(direction));
+        mobInstance.SetLinearVelocity(new Vector2(RandRange(mobInstance.MinSpeed, mobInstance.MaxSpeed), 0).Rotated(direction));
     }
 
 .. important:: In functions requiring angles, GDScript uses *radians*,
